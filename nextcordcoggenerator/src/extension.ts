@@ -111,13 +111,13 @@ export function activate(context: vscode.ExtensionContext) {
 // This method is called when your extension is deactivated
 export function deactivate() {}
 
-const template = `
-import nextcord
+const template = `import nextcord
 from nextcord.ext import commands
 
 class {NAME}(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
+
 
 def setup(client: commands.Bot):
     client.add_cog({NAME}(client))`
@@ -134,7 +134,7 @@ function check_if_in(choices: string[], goal: string) {
 function flatten(lists: any[]) {
 	return lists.reduce((a: string | any[], b: any) => a.concat(b), []);
 }
-	  
+
 function getDirectories(srcpath: any) {
 	return readdirSync(srcpath)
 		.map((file: any) => join(srcpath, file))
