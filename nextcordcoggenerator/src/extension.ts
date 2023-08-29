@@ -59,7 +59,7 @@ def setup(client: commands.Bot):
 						break
 					
 					case "text":
-						content = config.get("templateCode")!
+						content = config.get("templateCode")! ? config.get("templateCode")! : template
 						break
 
 					case "link":
