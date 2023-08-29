@@ -2,7 +2,7 @@
   "name": "nextcordcoggenerator",
   "displayName": "NextcordCogGenerator",
   "description": "",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "publisher": "nomindustries",
   "repository": {
     "type": "git",
@@ -14,7 +14,7 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": ["onStartupFinished"],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
@@ -31,7 +31,27 @@
           "when": "explorerResourceIsFolder"
         }
       ]
-    }
+    },
+    "configuration": [
+      {
+        "title": "Nextcord Cog Creator Settings",
+        "type": "object",
+        "properties": {
+          "nextcordcoggenerator.templateType": {
+            "type": "string",
+            "enum": ["default", "text", "link (does not work yet)", "path"],
+            "default": "default",
+            "description": "Type of template you are putting in"
+          },
+          "nextcordcoggenerator.templateCode": {
+            "type": "string",
+            "default": "",
+            "editPresentation": "multilineText",
+            "description": "A template for the cog that is created (you can put the code directly, paste a link to the code, or put the path to the file relative to your root directory for the project"
+          }
+        }
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
