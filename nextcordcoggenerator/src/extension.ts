@@ -59,7 +59,7 @@ def setup(client: commands.Bot):
 						break
 					
 					case "text":
-						content = config.get("templateCode")
+						content = config.get("templateCode")!
 						break
 
 					case "link":
@@ -67,7 +67,7 @@ def setup(client: commands.Bot):
 						break
 
 					case "path":
-						content = (await workspace.openTextDocument(Uri.parse("file:///" + workspace.workspaceFolders[0].uri.fsPath + "/" + config.get("templateCode")))).getText()
+						content = (await workspace.openTextDocument(Uri.parse("file:///" + workspace.workspaceFolders![0].uri.fsPath + "/" + config.get("templateCode")))).getText()
 				}
 				content = content.replace(new RegExp("{NAME}", 'g'), `${input.value.split(" ").map(function (word) {return word.charAt(0).toUpperCase() + word.substring(1)}).join("")}`)
 				
@@ -128,7 +128,7 @@ def setup(client: commands.Bot):
 							break
 						
 						case "text":
-							content = config.get("templateCode")
+							content = config.get("templateCode")! ? config.get("templateCode")! : template
 							break
 	
 						case "link":
@@ -136,7 +136,7 @@ def setup(client: commands.Bot):
 							break
 	
 						case "path":
-							content = (await workspace.openTextDocument(Uri.parse("file:///" + workspace.workspaceFolders[0].uri.fsPath + "/" + config.get("templateCode")))).getText()
+							content = (await workspace.openTextDocument(Uri.parse("file:///" + workspace.workspaceFolders![0].uri.fsPath + "/" + config.get("templateCode")))).getText()
 					}
 					content = content.replace(new RegExp("{NAME}", 'g'), `${name_of_file.value.split(" ").map(function (word) {return word.charAt(0).toUpperCase() + word.substring(1)}).join("")}`)
 
